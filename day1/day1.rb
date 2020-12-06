@@ -1,9 +1,11 @@
 def multiply_matching_entries(input)
+  possible_matches = Set.new
+
   input.each do |i|
-    input.each do |j|
-      if (i + j) == 2020
-        return i * j
-      end
+    if possible_matches.include?(i)
+      return (2020 - i) * i
+    else
+      possible_matches.add(2020 - i)
     end
   end
 end
