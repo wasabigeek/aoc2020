@@ -22,13 +22,18 @@ module Part1
 end
 
 module Part2
+  Edge = Struct.new(:to, :from)
+
   def self.multiply_matching_entries(input)
+    vertexes = []
+    edges = {}
     input.each do |i|
-      input.each do |j|
-        input.each do |k|
-          return i * j * k if i + j + k == 2020
-        end
+      return i * edges[i].to * edges[i].from if edges[i]
+
+      vertexes.each do |v|
+        edges[2020 - i - v] = Edge.new(i, v)
       end
+      vertexes << i
     end
   end
 end
