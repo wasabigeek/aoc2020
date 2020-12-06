@@ -24,6 +24,13 @@ end
 module Part2
   Edge = Struct.new(:to, :from)
 
+  def self.multiply_matching_entries_in_file(path)
+    # REFACTOR: instead of loading the entire file, see if it's possible to stream somehow? Since the approach seems to fine making a single pass
+    expanded_path = File.expand_path(path, File.expand_path(File.dirname(__FILE__)))
+    input = File.readlines(expanded_path).map(&:to_i)
+    multiply_matching_entries(input)
+  end
+
   def self.multiply_matching_entries(input)
     vertexes = []
     edges = {}
@@ -38,4 +45,4 @@ module Part2
   end
 end
 
-# puts Part1.multiply_matching_entries_in_file('input.txt')
+# puts Part2.multiply_matching_entries_in_file('input.txt')
