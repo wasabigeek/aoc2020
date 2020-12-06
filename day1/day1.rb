@@ -21,4 +21,16 @@ module Part1
   end
 end
 
-# puts multiply_matching_entries_in_file('input.txt')
+module Part2
+  def self.multiply_matching_entries(input)
+    input.each do |i|
+      input.each do |j|
+        input.each do |k|
+          return i * j * k if i + j + k == 2020
+        end
+      end
+    end
+  end
+end
+
+# puts Part1.multiply_matching_entries_in_file('input.txt')

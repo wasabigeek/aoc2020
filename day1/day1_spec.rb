@@ -40,3 +40,19 @@ RSpec.describe 'part 1' do
     end
   end
 end
+
+RSpec.describe 'Part2' do
+  describe '#multiply_matching_entries' do
+    it 'multiplies the correct entries' do
+      input = [
+        1721,
+        979,
+        366,
+        299,
+        675,
+        1456
+      ]
+      expect(Part2.multiply_matching_entries(input)).to eq(241861950)
+    end
+  end
+end
