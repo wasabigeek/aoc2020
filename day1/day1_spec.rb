@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative './day1.rb'
 
-RSpec.describe 'day1' do
+RSpec.describe '#multiply_matching_entries' do
   it 'multiples entries when both add to 2020' do
     input = [
       2019,
@@ -30,5 +30,11 @@ RSpec.describe 'day1' do
       1456
     ]
     expect(multiply_matching_entries(input)).to eq(514579)
+  end
+end
+
+RSpec.describe '#multiply_matching_entries_in_file' do
+  it 'multiplies the correct entries' do
+    expect(multiply_matching_entries_in_file('example.txt')).to eq(514579)
   end
 end
