@@ -1,3 +1,5 @@
+require 'set'
+
 def multiply_matching_entries_in_file(path)
   # REFACTOR: instead of loading the entire file, see if it's possible to stream somehow? Since the approach seems to fine making a single pass
   expanded_path = File.expand_path(path, File.expand_path(File.dirname(__FILE__)))
@@ -16,3 +18,5 @@ def multiply_matching_entries(input)
     end
   end
 end
+
+# puts multiply_matching_entries_in_file('input.txt')
