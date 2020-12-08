@@ -3,10 +3,13 @@ require_relative '../helpers'
 class PartOne
   include FileHelpers
 
-  # def check_passwords_in_file(path)
-  #   passwords = readlines_from_file(path)
-  #   valid_passwords
-  # end
+  def check_passwords_in_file(path)
+    passwords = readlines_from_file(path)
+    valid_passwords = passwords.reduce(0) do |count, password|
+      count += 1 if check_password(password)
+      count
+    end
+  end
 
   def check_password(input)
     policy_str, password = input.split(': ')
