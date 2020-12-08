@@ -51,7 +51,7 @@ RSpec.describe PartTwo do
 
   describe '#check_passwords_in_file' do
     it 'returns count of valid passwords' do
-      expect(PartOne.new.check_passwords_in_file('day2/example.txt')).to eq(1)
+      expect(PartTwo.new.check_passwords_in_file('day2/example.txt')).to eq(1)
     end
   end
 end
