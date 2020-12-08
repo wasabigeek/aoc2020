@@ -8,7 +8,7 @@ RSpec.describe 'part 1' do
         2019,
         1
       ]
-      expect(Part1.multiply_matching_entries(input)).to eq(2019)
+      expect(Part1.new.multiply_matching_entries(input)).to eq(2019)
     end
 
     it 'multiplies the correct entries when there are others' do
@@ -18,7 +18,7 @@ RSpec.describe 'part 1' do
         1,
         3
       ]
-      expect(Part1.multiply_matching_entries(input)).to eq(2019)
+      expect(Part1.new.multiply_matching_entries(input)).to eq(2019)
     end
 
     it 'multiplies the correct entries' do
@@ -30,13 +30,13 @@ RSpec.describe 'part 1' do
         675,
         1456
       ]
-      expect(Part1.multiply_matching_entries(input)).to eq(514579)
+      expect(Part1.new.multiply_matching_entries(input)).to eq(514579)
     end
   end
 
   describe '#multiply_matching_entries_in_file' do
     it 'multiplies the correct entries' do
-      expect(Part1.multiply_matching_entries_in_file('example.txt')).to eq(514579)
+      expect(Part1.new.multiply_matching_entries_in_file('day1/example.txt')).to eq(514579)
     end
   end
 end

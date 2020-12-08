@@ -1,14 +1,16 @@
 require 'set'
+require_relative '../helpers.rb'
 
-module Part1
-  def self.multiply_matching_entries_in_file(path)
+class Part1
+  include FileHelpers
+
+  def multiply_matching_entries_in_file(path)
     # REFACTOR: instead of loading the entire file, see if it's possible to stream somehow? Since the approach seems to fine making a single pass
-    expanded_path = File.expand_path(path, File.expand_path(File.dirname(__FILE__)))
-    input = File.readlines(expanded_path).map(&:to_i)
+    input = readlines_from_file(path).map(&:to_i)
     multiply_matching_entries(input)
   end
 
-  def self.multiply_matching_entries(input)
+  def multiply_matching_entries(input)
     possible_matches = Set.new
 
     input.each do |i|
