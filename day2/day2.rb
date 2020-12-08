@@ -3,6 +3,8 @@ require_relative '../helpers'
 class PartOne
   include FileHelpers
 
+  INPUT_REGEX = /(\d+)-(\d+) ([a-z]): ([a-z]+)/
+
   def check_passwords_in_file(path)
     passwords = readlines_from_file(path)
     valid_passwords = passwords.reduce(0) do |count, password|
@@ -11,11 +13,11 @@ class PartOne
     end
   end
 
+  # Could do this in one pass through the string - but this is at least a bit more readable
+  # Also, it's not _really_ a password that is input, but I'll leave the naming decision for another day
   def check_password(input)
-    # Could do this in one pass through the string - not sure how much complexity #split adds, but this is at least a bit more readable
-    policy_str, password = input.split(': ')
-    minmax_str, letter = policy_str.split(' ')
-    min, max = minmax_str.split('-').map(&:to_i)
+    _, min_str, max_str, letter, password = input.match(INPUT_REGEX).to_a
+    min, max = min_str.to_i, max_str.to_i
 
     matches = password.split('').reduce(0) do |count, char|
       count += 1 if char == letter
@@ -29,6 +31,8 @@ end
 class PartTwo
   include FileHelpers
 
+  INPUT_REGEX = /(\d+)-(\d+) ([a-z]): ([a-z]+)/
+
   def check_passwords_in_file(path)
     passwords = readlines_from_file(path)
     valid_passwords = passwords.reduce(0) do |count, password|
@@ -39,17 +43,13 @@ class PartTwo
 
   def check_password(input)
     # resisting the desire to abstract a Policy for now
-    policy_str, password = input.split(': ')
-    positions_str, checked_letter = policy_str.split(' ')
-    first_index, second_index = positions_str
-      .split('-')
-      .map(&:to_i)
-      .map { |p| p - 1 }
+    _, first_index_str, second_index_str, letter, password = input.match(INPUT_REGEX).to_a
+    first_index, second_index = first_index_str.to_i - 1, second_index_str.to_i - 1
 
     [
       password[first_index],
       password[second_index]
-    ].count { |char| char == checked_letter } == 1
+    ].count { |char| char == letter } == 1
   end
 end
 
