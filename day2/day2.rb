@@ -12,6 +12,7 @@ class PartOne
   end
 
   def check_password(input)
+    # Could do this in one pass through the string - not sure how much complexity #split adds, but this is at least a bit more readable
     policy_str, password = input.split(': ')
     minmax_str, letter = policy_str.split(' ')
     min, max = minmax_str.split('-').map(&:to_i)
@@ -24,3 +25,5 @@ class PartOne
     matches <= max && matches >= min
   end
 end
+
+# puts PartOne.new.check_passwords_in_file('day2/input.txt')
