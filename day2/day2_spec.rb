@@ -17,5 +17,10 @@ RSpec.describe PartOne do
       input = '2-9 c: ccccccccc'
       expect(PartOne.new.check_password(input)).to eq(true)
     end
+
+    it 'works if bounds are double digit' do
+      input = '2-19 c: ccccccccc'
+      expect(PartOne.new.check_password(input)).to eq(true)
+    end
   end
 end
