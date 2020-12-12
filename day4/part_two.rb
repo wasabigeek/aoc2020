@@ -14,13 +14,14 @@ module Day4
     end
 
     def validate_field_value(field, value)
-      if field == 'byr'
+      case field
+      when 'byr'
         value.size == 4 && value.to_i >= 1920 && value.to_i <= 2002
-      elsif field == 'iyr'
+      when 'iyr'
         value.size == 4 && value.to_i >= 2010 && value.to_i <= 2020
-      elsif field == 'eyr'
+      when 'eyr'
         value.size == 4 && value.to_i >= 2020 && value.to_i <= 2030
-      elsif field == 'hgt'
+      when 'hgt'
         number, unit = value[0..-2].to_i, value[-2..value.size]
 
         return false unless ['cm', 'in'].include? unit
@@ -29,6 +30,8 @@ module Day4
         else
           number >=59 && number <=76
         end
+      when 'hcl'
+        true
       end
     end
 

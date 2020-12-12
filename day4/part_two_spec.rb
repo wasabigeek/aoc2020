@@ -189,6 +189,19 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq(true)
       end
     end
+
+    context 'with hcl data' do
+      let(:field) { 'hcl' }
+      it 'returns true if valid' do
+        value = '#123abz'
+        expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
+
+      it 'returns false if < 4 digits' do
+        value = '200'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+    end
   end
 
   describe '#count_valid_passports' do
