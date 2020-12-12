@@ -33,7 +33,7 @@ module Day4
       when 'hcl'
         /#[a-f0-9]{6}/.match?(value)
       when 'ecl'
-        true
+        %w[amb blu brn gry grn hzl oth].include? value
       end
     end
 

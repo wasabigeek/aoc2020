@@ -226,6 +226,11 @@ RSpec.describe Day4::PartTwo do
         end
         expect(validations.all?).to eq true
       end
+
+      it 'returns false if invalid' do
+        value = 'wat'
+        expect(described_class.new.validate_field_value(field, value)).to eq false
+      end
     end
   end
 
