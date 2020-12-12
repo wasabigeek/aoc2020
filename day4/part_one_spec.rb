@@ -1,7 +1,7 @@
 require 'rspec'
-require_relative './day4.rb'
+require_relative './part_one.rb'
 
-RSpec.describe PartOne do
+RSpec.describe Day4::PartOne do
   describe '#extract_fields' do
     it 'extracts passport fields' do
       input = <<~TXT
