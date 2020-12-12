@@ -24,7 +24,11 @@ module Day4
         number, unit = value[0..-2].to_i, value[-2..value.size]
 
         return false unless ['cm', 'in'].include? unit
-        number >= 150 && number <=193
+        if unit == 'cm'
+          number >= 150 && number <=193
+        else
+          number >=59 && number <=76
+        end
       end
     end
 
