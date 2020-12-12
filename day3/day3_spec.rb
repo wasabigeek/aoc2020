@@ -10,5 +10,13 @@ RSpec.describe PartOne do
       ]
       expect(PartOne.new.count_trees_in_path(input)).to eq(0)
     end
+
+    it 'returns 1 for single traversal with a tree' do
+      input = [
+        '.###',
+        '...#'
+      ]
+      expect(PartOne.new.count_trees_in_path(input)).to eq(1)
+    end
   end
 end

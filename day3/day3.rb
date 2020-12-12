@@ -1,5 +1,9 @@
 class PartOne
   def count_trees_in_path(terrain)
-    0
+    if terrain.last[-1] == '#'
+      1
+    else
+      0
+    end
   end
 end
