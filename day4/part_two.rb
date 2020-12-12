@@ -20,6 +20,8 @@ module Day4
         value.size == 4 && value.to_i >= 2010 && value.to_i <= 2020
       elsif field == 'eyr'
         value.size == 4 && value.to_i >= 2020 && value.to_i <= 2030
+      elsif field == 'hgt'
+        ['cm', 'in'].include? value[-2..value.length]
       end
     end
 

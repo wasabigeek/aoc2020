@@ -141,6 +141,24 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
     end
+
+    context 'with hgt data' do
+      let(:field) { 'hgt' }
+      it 'returns true if valid inches' do
+        value = '60in'
+        expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
+
+      it 'returns true if valid cm' do
+        value = '190cm'
+        expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
+
+      it 'returns false if no unit given' do
+        value = '190'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+    end
   end
 
   describe '#count_valid_passports' do
