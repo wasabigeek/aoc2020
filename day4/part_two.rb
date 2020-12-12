@@ -14,7 +14,11 @@ module Day4
     end
 
     def validate_field_value(field, value)
-      value.size == 4 && value.to_i >= 1920 && value.to_i <= 2002
+      if field == 'byr'
+        value.size == 4 && value.to_i >= 1920 && value.to_i <= 2002
+      elsif field == 'iyr'
+        value.size == 4 && value.to_i >= 2010 && value.to_i <= 2020
+      end
     end
 
     def validate_fields(fields)
