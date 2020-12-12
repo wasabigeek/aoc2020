@@ -159,7 +159,10 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
 
-      it 'returns false if invalid number'
+      it 'returns false if invalid number' do
+        value = 'abcm'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
 
       it 'returns false if cm and height <150' do
         value = '149cm'
