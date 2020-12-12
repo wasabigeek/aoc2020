@@ -42,11 +42,13 @@ module Day4
     end
 
     def validate_fields(fields)
-      REQUIRED_FIELDS.subset?(Set.new(fields))
+      REQUIRED_FIELDS.subset?(Set.new(fields.map(&:first)))
     end
 
     def count_valid_passports(input)
-      parse_passports(input).count { |fields|  validate_fields(fields) }
+      parse_passports(input).count do |fields|
+        validate_fields(fields)
+      end
     end
 
     def count_valid_passports_in_file(filepath)
