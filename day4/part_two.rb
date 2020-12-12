@@ -46,8 +46,9 @@ module Day4
     end
 
     def count_valid_passports(input)
-      parse_passports(input).count do |fields|
-        validate_fields(fields)
+      parse_passports(input).count do |data|
+        # TODO: group the required + valid data responsibilities by field
+        validate_fields(data) && data.all? { |field, value| validate_field_value(field, value) }
       end
     end
 
