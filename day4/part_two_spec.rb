@@ -113,6 +113,34 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
     end
+
+    context 'with eyr data' do
+      let(:field) { 'eyr' }
+      it 'returns true if valid' do
+        value = '2020'
+        expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
+
+      it 'returns false if < 4 digits' do
+        value = '200'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if > 4 digits' do
+        value = '20022'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if <2020' do
+        value = '2019'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if >2030' do
+        value = '2031'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+    end
   end
 
   describe '#count_valid_passports' do

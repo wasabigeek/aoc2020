@@ -18,6 +18,8 @@ module Day4
         value.size == 4 && value.to_i >= 1920 && value.to_i <= 2002
       elsif field == 'iyr'
         value.size == 4 && value.to_i >= 2010 && value.to_i <= 2020
+      elsif field == 'eyr'
+        value.size == 4 && value.to_i >= 2020 && value.to_i <= 2030
       end
     end
 
