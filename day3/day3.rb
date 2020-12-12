@@ -1,7 +1,16 @@
+require_relative '../helpers'
 class PartOne
+  include FileHelpers
+
+  def count_trees_from_file(path)
+    count_trees_in_path(readlines_from_file(path))
+  end
+
   def count_trees_in_path(terrain_template)
     return check_tree(0, 0, terrain_template)
   end
+
+  private
 
   def check_tree(x, y, terrain_template)
     max_width = terrain_template.first.size

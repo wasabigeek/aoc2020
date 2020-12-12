@@ -6,7 +6,7 @@ module FileHelpers
   #
   def readlines_from_file(path)
     expanded_path = File.expand_path(path, File.expand_path(File.dirname(__FILE__)))
-    File.readlines(expanded_path)
+    File.readlines(expanded_path, chomp: true)
   end
 end
 

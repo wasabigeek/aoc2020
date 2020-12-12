@@ -28,4 +28,10 @@ RSpec.describe PartOne do
       expect(PartOne.new.count_trees_in_path(input)).to eq(2)
     end
   end
+
+  describe '#count_trees_from_file' do
+    it 'returns the correct count' do
+      expect(PartOne.new.count_trees_from_file('day3/example.txt')).to eq(7)
+    end
+  end
 end
