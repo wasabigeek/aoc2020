@@ -32,6 +32,8 @@ module Day4
         end
       when 'hcl'
         /#[a-f0-9]{6}/.match?(value)
+      when 'ecl'
+        true
       end
     end
 

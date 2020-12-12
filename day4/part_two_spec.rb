@@ -217,6 +217,16 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
     end
+
+    context 'with ecl data' do
+      let(:field) { 'ecl' }
+      it 'returns true if valid' do
+        validations = %w[amb blu brn gry grn hzl oth].map do |value|
+          described_class.new.validate_field_value(field, value)
+        end
+        expect(validations.all?).to eq true
+      end
+    end
   end
 
   describe '#count_valid_passports' do
