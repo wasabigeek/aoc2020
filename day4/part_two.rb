@@ -31,7 +31,7 @@ module Day4
           number >=59 && number <=76
         end
       when 'hcl'
-        true
+        /#[a-f0-9]{6}/.match?(value)
       end
     end
 

@@ -193,12 +193,27 @@ RSpec.describe Day4::PartTwo do
     context 'with hcl data' do
       let(:field) { 'hcl' }
       it 'returns true if valid' do
-        value = '#123abz'
+        value = '#123abc'
         expect(described_class.new.validate_field_value(field, value)).to eq(true)
       end
 
-      it 'returns false if < 4 digits' do
-        value = '200'
+      it 'returns false if missing #' do
+        value = '123abc'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if <6 characters after #' do
+        value = '#123ab'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if characters after # are after the letter f' do
+        value = '#123abz'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false characters after # are not alphanumeric' do
+        value = '#123.ab'
         expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
     end
