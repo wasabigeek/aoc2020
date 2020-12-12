@@ -15,4 +15,8 @@ class PartOne
   def validate_fields(fields)
     REQUIRED_FIELDS.subset?(Set.new(fields))
   end
+
+  def count_valid_passports(input)
+    parse_passports(input).count { |fields|  validate_fields(fields) }
+  end
 end
