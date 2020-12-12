@@ -21,7 +21,10 @@ module Day4
       elsif field == 'eyr'
         value.size == 4 && value.to_i >= 2020 && value.to_i <= 2030
       elsif field == 'hgt'
-        ['cm', 'in'].include? value[-2..value.length]
+        number, unit = value[0..-2].to_i, value[-2..value.size]
+
+        return false unless ['cm', 'in'].include? unit
+        number >= 150 && number <=193
       end
     end
 
