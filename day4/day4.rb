@@ -19,4 +19,9 @@ class PartOne
   def count_valid_passports(input)
     parse_passports(input).count { |fields|  validate_fields(fields) }
   end
+
+  def count_valid_passports_in_file(filepath)
+    expanded_path = File.expand_path(filepath, File.expand_path('..', File.dirname(__FILE__)))
+    count_valid_passports(File.read(expanded_path))
+  end
 end

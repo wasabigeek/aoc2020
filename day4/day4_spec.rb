@@ -81,4 +81,10 @@ RSpec.describe PartOne do
       expect(described_class.new.count_valid_passports(input)).to eq(2)
     end
   end
+
+  describe '#count_valid_passports_in_file' do
+    it 'returns the correct count' do
+      expect(described_class.new.count_valid_passports_in_file('day4/example.txt')).to eq(2)
+    end
+  end
 end
