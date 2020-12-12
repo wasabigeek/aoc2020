@@ -38,49 +38,49 @@ end
 
 RSpec.describe PartTwo do
   describe '#count_trees_in_path' do
-    it 'returns the correct count for original slope' do
-      slope = described_class::Slope.new(3, 1)
+    it 'returns the correct count for original angle' do
+      angle = described_class::Angle.new(3, 1)
       input = [
         '....',
         '...#',
         '..#.'
       ]
-      expect(PartTwo.new.count_trees_in_path(input, slope)).to eq(2)
+      expect(PartTwo.new.count_trees_in_path(input, angle)).to eq(2)
     end
 
-    it 'returns the correct count for other slopes' do
-      slope = described_class::Slope.new(1, 1)
+    it 'returns the correct count for other angles' do
+      angle = described_class::Angle.new(1, 1)
       input = [
         '....',
         '...#',
         '..#.'
       ]
-      expect(PartTwo.new.count_trees_in_path(input, slope)).to eq(1)
+      expect(PartTwo.new.count_trees_in_path(input, angle)).to eq(1)
     end
   end
 
   describe '#count_trees_from_file' do
-    it 'returns the correct count for the original slope' do
-      slope = described_class::Slope.new(3, 1)
-      expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(7)
+    it 'returns the correct count for the original angle' do
+      angle = described_class::Angle.new(3, 1)
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', angle)).to eq(7)
     end
 
-    it 'returns the correct count for different slopes' do
-      slope = described_class::Slope.new(1, 1)
-      expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(2)
-      slope = described_class::Slope.new(5, 1)
-      expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(3)
-      slope = described_class::Slope.new(7, 1)
-      expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(4)
-      slope = described_class::Slope.new(1, 2)
-      expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(2)
+    it 'returns the correct count for different angles' do
+      angle = described_class::Angle.new(1, 1)
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', angle)).to eq(2)
+      angle = described_class::Angle.new(5, 1)
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', angle)).to eq(3)
+      angle = described_class::Angle.new(7, 1)
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', angle)).to eq(4)
+      angle = described_class::Angle.new(1, 2)
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', angle)).to eq(2)
     end
   end
 
-  describe '#multiply_trees_across_slopes' do
+  describe '#multiply_trees_across_angles' do
     it 'returns the correct count' do
-      slope = described_class::Slope.new(1, 1)
-      expect(PartTwo.new.multiply_trees_across_slopes('day3/example.txt')).to eq(336)
+      angle = described_class::Angle.new(1, 1)
+      expect(PartTwo.new.multiply_trees_across_angles('day3/example.txt')).to eq(336)
     end
   end
 end

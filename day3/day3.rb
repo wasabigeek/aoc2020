@@ -35,32 +35,32 @@ end
 class PartTwo
   include FileHelpers
 
-  Slope = Struct.new(:right, :down)  # possibly calculate the position in the template
+  Angle = Struct.new(:right, :down)  # possibly calculate the position in the template
 
-  def multiply_trees_across_slopes(path)
-    slopes = [
-      Slope.new(1, 1),
-      Slope.new(3, 1),
-      Slope.new(5, 1),
-      Slope.new(7, 1),
-      Slope.new(1, 2),
+  def multiply_trees_across_angles(filepath)
+    angles = [
+      Angle.new(1, 1),
+      Angle.new(3, 1),
+      Angle.new(5, 1),
+      Angle.new(7, 1),
+      Angle.new(1, 2),
     ]
 
-    slopes.map { |s| count_trees_from_file(path, s) }.reduce(1, :*)
+    angles.map { |s| count_trees_from_file(filepath, s) }.reduce(1, :*)
   end
 
-  def count_trees_from_file(path, slope)
-    count_trees_in_path(readlines_from_file(path), slope)
+  def count_trees_from_file(filepath, angle)
+    count_trees_in_path(readlines_from_file(filepath), angle)
   end
 
   # TODO: `path` clashes with filepath, rename
-  def count_trees_in_path(terrain_template, slope)
-    return check_tree(0, 0, terrain_template, slope: slope)
+  def count_trees_in_path(terrain_template, angle)
+    return check_tree(0, 0, terrain_template, angle: angle)
   end
 
   private
 
-  def check_tree(x, y, terrain_template, slope:)
+  def check_tree(x, y, terrain_template, angle:)
     max_width = terrain_template.first.size
     max_height = terrain_template.size
 
@@ -72,7 +72,7 @@ class PartTwo
       return tree_count
     end
 
-    return tree_count + check_tree(x + slope.right, y + slope.down, terrain_template, slope: slope)
+    return tree_count + check_tree(x + angle.right, y + angle.down, terrain_template, angle: angle)
   end
 
   def is_tree?(char)
@@ -82,4 +82,4 @@ end
 
 
 # puts PartOne.new.count_trees_from_file('day3/input.txt')
-puts PartTwo.new.multiply_trees_across_slopes('day3/input.txt')
+puts PartTwo.new.multiply_trees_across_angles('day3/input.txt')
