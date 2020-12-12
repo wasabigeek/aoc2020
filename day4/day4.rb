@@ -1,6 +1,8 @@
+require 'set'
+
 class PartOne
   FIELD_REGEX = /(\w{3}):/
-  REQUIRED_FIELDS = %w[byr iyr eyr hgt hcl ecl pid]
+  REQUIRED_FIELDS = Set.new %w[byr iyr eyr hgt hcl ecl pid]
 
   def extract_fields(input)
     input.scan(FIELD_REGEX).flatten
@@ -11,6 +13,6 @@ class PartOne
   end
 
   def validate_fields(fields)
-    REQUIRED_FIELDS.all? { |req| fields.include?(req) }
+    REQUIRED_FIELDS.subset?(Set.new(fields))
   end
 end
