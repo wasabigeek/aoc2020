@@ -250,6 +250,11 @@ RSpec.describe Day4::PartTwo do
         value = '01234567'
         expect(described_class.new.validate_field_value(field, value)).to eq false
       end
+
+      it 'returns false if non-digits' do
+        value = '0123c5678'
+        expect(described_class.new.validate_field_value(field, value)).to eq false
+      end
     end
   end
 

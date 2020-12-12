@@ -35,7 +35,7 @@ module Day4
       when 'ecl'
         %w[amb blu brn gry grn hzl oth].include? value
       when 'pid'
-        value.size == 9
+        /^[0-9]{9}$/.match?(value)
       end
     end
 
