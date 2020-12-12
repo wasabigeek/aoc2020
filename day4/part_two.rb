@@ -13,6 +13,10 @@ module Day4
       input.split("\n\n").map { |parseport| extract_fields(parseport) }
     end
 
+    def validate_field_value(field, value)
+      true
+    end
+
     def validate_fields(fields)
       REQUIRED_FIELDS.subset?(Set.new(fields))
     end

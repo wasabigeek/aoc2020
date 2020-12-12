@@ -57,23 +57,12 @@ RSpec.describe Day4::PartTwo do
     end
   end
 
-  describe '#validate_fields' do
-    it 'returns false if there are missing fields' do
-      fields = %w[hcl eyr pid iyr ecl hgt]
-
-      expect(described_class.new.validate_fields(fields)).to eq(false)
-    end
-
-    it 'returns true if all fields are present' do
-      fields = %w[byr iyr eyr hgt hcl ecl pid cid]
-
-      expect(described_class.new.validate_fields(fields)).to eq(true)
-    end
-
-    it 'returns true if all fields except cid are present' do
-      fields = %w[byr iyr eyr hgt hcl ecl pid]
-
-      expect(described_class.new.validate_fields(fields)).to eq(true)
+  describe '#validate_field_value' do
+    context 'with byr data' do
+      it 'returns true if valid' do
+        field, value = 'byr', '2002'
+        expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
     end
   end
 
