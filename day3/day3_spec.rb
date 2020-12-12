@@ -76,4 +76,11 @@ RSpec.describe PartTwo do
       expect(PartTwo.new.count_trees_from_file('day3/example.txt', slope)).to eq(2)
     end
   end
+
+  describe '#multiply_trees_across_slopes' do
+    it 'returns the correct count' do
+      slope = described_class::Slope.new(1, 1)
+      expect(PartTwo.new.multiply_trees_across_slopes('day3/example.txt')).to eq(336)
+    end
+  end
 end

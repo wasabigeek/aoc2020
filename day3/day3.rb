@@ -37,10 +37,23 @@ class PartTwo
 
   Slope = Struct.new(:right, :down)  # possibly calculate the position in the template
 
+  def multiply_trees_across_slopes(path)
+    slopes = [
+      Slope.new(1, 1),
+      Slope.new(3, 1),
+      Slope.new(5, 1),
+      Slope.new(7, 1),
+      Slope.new(1, 2),
+    ]
+
+    slopes.map { |s| count_trees_from_file(path, s) }.reduce(1, :*)
+  end
+
   def count_trees_from_file(path, slope)
     count_trees_in_path(readlines_from_file(path), slope)
   end
 
+  # TODO: `path` clashes with filepath, rename
   def count_trees_in_path(terrain_template, slope)
     return check_tree(0, 0, terrain_template, slope: slope)
   end
@@ -69,3 +82,4 @@ end
 
 
 # puts PartOne.new.count_trees_from_file('day3/input.txt')
+puts PartTwo.new.multiply_trees_across_slopes('day3/input.txt')
