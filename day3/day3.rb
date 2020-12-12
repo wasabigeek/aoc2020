@@ -36,16 +36,16 @@ class PartTwo
   include FileHelpers
 
   def count_trees_from_file(path, right, down)
-    count_trees_in_path(readlines_from_file(path))
+    count_trees_in_path(readlines_from_file(path), right, down)
   end
 
   def count_trees_in_path(terrain_template, right, down)
-    return check_tree(0, 0, terrain_template)
+    return check_tree(0, 0, terrain_template, right: right, down: down)
   end
 
   private
 
-  def check_tree(x, y, terrain_template)
+  def check_tree(x, y, terrain_template, right:, down:)
     max_width = terrain_template.first.size
     max_height = terrain_template.size
 
@@ -57,7 +57,7 @@ class PartTwo
       return tree_count
     end
 
-    return tree_count + check_tree(x + 3, y + 1, terrain_template)
+    return tree_count + check_tree(x + right, y + down, terrain_template, right: right, down: down)
   end
 
   def is_tree?(char)

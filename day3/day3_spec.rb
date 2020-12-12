@@ -47,12 +47,33 @@ RSpec.describe PartTwo do
       ]
       expect(PartTwo.new.count_trees_in_path(input, right, down)).to eq(2)
     end
+
+    it 'returns the correct count for other slopes' do
+      right, down = 1, 1
+      input = [
+        '....',
+        '...#',
+        '..#.'
+      ]
+      expect(PartTwo.new.count_trees_in_path(input, right, down)).to eq(1)
+    end
   end
 
   describe '#count_trees_from_file' do
     it 'returns the correct count for the original slope' do
       right, down = 3, 1
       expect(PartTwo.new.count_trees_from_file('day3/example.txt', right, down)).to eq(7)
+    end
+
+    it 'returns the correct count for different slopes' do
+      right, down = 1, 1
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', right, down)).to eq(2)
+      right, down = 5, 1
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', right, down)).to eq(3)
+      right, down = 7, 1
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', right, down)).to eq(4)
+      right, down = 1, 2
+      expect(PartTwo.new.count_trees_from_file('day3/example.txt', right, down)).to eq(2)
     end
   end
 end
