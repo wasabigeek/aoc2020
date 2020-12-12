@@ -2,11 +2,11 @@ require 'set'
 
 module Day4
   class PartTwo
-    FIELD_REGEX = /(\w{3}):/
+    FIELD_REGEX = /(?<field>\w{3}):(?<value>#?\w+)/
     REQUIRED_FIELDS = Set.new %w[byr iyr eyr hgt hcl ecl pid]
 
     def extract_fields(input)
-      input.scan(FIELD_REGEX).flatten
+      input.scan(FIELD_REGEX)
     end
 
     def parse_passports(input)

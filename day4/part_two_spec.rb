@@ -9,7 +9,16 @@ RSpec.describe Day4::PartTwo do
         byr:1937 iyr:2017 cid:147 hgt:183cm
       TXT
 
-      expect(described_class.new.extract_fields(input)).to match_array(%w[ecl pid eyr hcl byr iyr cid hgt])
+      expect(described_class.new.extract_fields(input)).to include(
+        ['ecl', 'gry'],
+        ['pid', '860033327'],
+        ['eyr', '2020'],
+        ['hcl', '#fffffd'],
+        ['byr', '1937'],
+        ['iyr', '2017'],
+        ['cid', '147'],
+        ['hgt', '183cm']
+      )
     end
   end
 
