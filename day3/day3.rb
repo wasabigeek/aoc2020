@@ -35,17 +35,19 @@ end
 class PartTwo
   include FileHelpers
 
-  def count_trees_from_file(path, right, down)
-    count_trees_in_path(readlines_from_file(path), right, down)
+  Slope = Struct.new(:right, :down)  # possibly calculate the position in the template
+
+  def count_trees_from_file(path, slope)
+    count_trees_in_path(readlines_from_file(path), slope)
   end
 
-  def count_trees_in_path(terrain_template, right, down)
-    return check_tree(0, 0, terrain_template, right: right, down: down)
+  def count_trees_in_path(terrain_template, slope)
+    return check_tree(0, 0, terrain_template, slope: slope)
   end
 
   private
 
-  def check_tree(x, y, terrain_template, right:, down:)
+  def check_tree(x, y, terrain_template, slope:)
     max_width = terrain_template.first.size
     max_height = terrain_template.size
 
@@ -57,7 +59,7 @@ class PartTwo
       return tree_count
     end
 
-    return tree_count + check_tree(x + right, y + down, terrain_template, right: right, down: down)
+    return tree_count + check_tree(x + slope.right, y + slope.down, terrain_template, slope: slope)
   end
 
   def is_tree?(char)
