@@ -59,9 +59,20 @@ RSpec.describe Day4::PartTwo do
 
   describe '#validate_field_value' do
     context 'with byr data' do
+      let(:field) { 'byr' }
       it 'returns true if valid' do
-        field, value = 'byr', '2002'
+        value = '2002'
         expect(described_class.new.validate_field_value(field, value)).to eq(true)
+      end
+
+      it 'returns false if < 4 digits' do
+        value = '200'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
+      end
+
+      it 'returns false if > 4 digits' do
+        value = '20022'
+        expect(described_class.new.validate_field_value(field, value)).to eq(false)
       end
     end
   end

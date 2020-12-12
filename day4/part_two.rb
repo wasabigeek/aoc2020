@@ -14,7 +14,7 @@ module Day4
     end
 
     def validate_field_value(field, value)
-      true
+      value.size == 4
     end
 
     def validate_fields(fields)
