@@ -19,11 +19,10 @@ RSpec.describe PartOne do
       expect(PartOne.new.count_trees_in_path(input)).to eq(1)
     end
 
-    it 'returns the correct count when the terrain repeats' do
+    it 'returns the correct count when terrain repeats horizontally' do
       input = [
         '....',
         '...#',
-        '....',
         '..#.'
       ]
       expect(PartOne.new.count_trees_in_path(input)).to eq(2)
