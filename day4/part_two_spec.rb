@@ -256,6 +256,14 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq false
       end
     end
+
+    context 'with cid data' do
+      let(:field) { 'cid' }
+      it 'returns true' do
+        value = '0123c5678'
+        expect(described_class.new.validate_field_value(field, value)).to eq true
+      end
+    end
   end
 
   describe '#count_valid_passports' do

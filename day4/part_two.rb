@@ -36,6 +36,8 @@ module Day4
         %w[amb blu brn gry grn hzl oth].include? value
       when 'pid'
         /^[0-9]{9}$/.match?(value)
+      when 'cid'
+        true
       end
     end
 
