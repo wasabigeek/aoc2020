@@ -232,6 +232,25 @@ RSpec.describe Day4::PartTwo do
         expect(described_class.new.validate_field_value(field, value)).to eq false
       end
     end
+
+    context 'with pid data' do
+      let(:field) { 'pid' }
+
+      it 'returns true if 9 digits' do
+        value = '000000001'
+        expect(described_class.new.validate_field_value(field, value)).to eq true
+      end
+
+      it 'returns false if >9 digits' do
+        value = '0123456789'
+        expect(described_class.new.validate_field_value(field, value)).to eq false
+      end
+
+      it 'returns false if <9 digits' do
+        value = '01234567'
+        expect(described_class.new.validate_field_value(field, value)).to eq false
+      end
+    end
   end
 
   describe '#count_valid_passports' do
