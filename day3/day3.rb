@@ -53,27 +53,23 @@ class PartTwo
     count_trees_in_path(readlines_from_file(filepath), angle)
   end
 
-  # TODO: `path` clashes with filepath, rename
   def count_trees_in_path(terrain_template, angle)
-    return check_tree(0, 0, terrain_template, angle: angle)
-  end
-
-  private
-
-  def check_tree(x, y, terrain_template, angle:)
     max_width = terrain_template.first.size
     max_height = terrain_template.size
 
-    template_x = (x + 1) % max_width - 1
-    template_x = max_width - 1 if template_x == -1
+    x, y = 0, 0 # indexes, not width / height
+    tree_count = 0
+    while y < max_height
+      tree_count += 1 if is_tree?(terrain_template[y][x])
 
-    tree_count = is_tree?(terrain_template[y][template_x]) ? 1 : 0
-    if y + 1 >= max_height
-      return tree_count
+      x = (x + angle.right) % max_width
+      y += angle.down
     end
 
-    return tree_count + check_tree(x + angle.right, y + angle.down, terrain_template, angle: angle)
+    return tree_count
   end
+
+  private
 
   def is_tree?(char)
     char == '#'
