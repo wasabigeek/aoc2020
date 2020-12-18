@@ -13,6 +13,21 @@ RSpec.describe Day5::PartOne do
       part_one.partition_row('B')
       expect(part_one.row_upper_bound).to eq(63)
       expect(part_one.row_lower_bound).to eq(32)
+      part_one.partition_row('F')
+      expect(part_one.row_upper_bound).to eq(47)
+      expect(part_one.row_lower_bound).to eq(32)
+      part_one.partition_row('B')
+      expect(part_one.row_upper_bound).to eq(47)
+      expect(part_one.row_lower_bound).to eq(40)
+      part_one.partition_row('B')
+      expect(part_one.row_upper_bound).to eq(47)
+      expect(part_one.row_lower_bound).to eq(44)
+      part_one.partition_row('F')
+      expect(part_one.row_upper_bound).to eq(45)
+      expect(part_one.row_lower_bound).to eq(44)
+      part_one.partition_row('F')
+      expect(part_one.row_upper_bound).to eq(44)
+      expect(part_one.row_lower_bound).to eq(44)
     end
   end
 end
