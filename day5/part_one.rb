@@ -7,6 +7,7 @@ module Day5
 
     def initialize(instructions=nil)
       @instructions = instructions
+      @processed = false
 
       @row_upper_bound = 127
       @row_lower_bound = 0
@@ -37,6 +38,7 @@ module Day5
     end
 
     def seat_id
+      process unless @processed
       row_upper_bound * 8 + col_upper_bound
     end
 
@@ -44,6 +46,7 @@ module Day5
       @instructions.split('').each do |instruction|
         partition_once(instruction)
       end
+      @processed = true
 
       [row_upper_bound, col_upper_bound, seat_id]
     end
@@ -54,8 +57,7 @@ module Day5
 
     def calculate_seat_ids(filepath)
       readlines_from_file(filepath).map do |instructions|
-        _, _, seat_id = BoardingInstructions.new(instructions).process_instructions
-        seat_id
+        BoardingPass.new(instructions).seat_id
       end
     end
 

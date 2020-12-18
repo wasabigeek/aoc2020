@@ -43,7 +43,7 @@ RSpec.describe Day5::BoardingPass do
     end
   end
 
-  describe '#process_instructions' do
+  describe '#process' do
     it 'returns the correct row, column and seat ID' do
       row, col, seat_id = described_class.new('BFFFBBFRRR').process
       expect(row).to eq(70)
@@ -59,6 +59,14 @@ RSpec.describe Day5::BoardingPass do
       expect(row).to eq(102)
       expect(col).to eq(4)
       expect(seat_id).to eq(820)
+    end
+  end
+end
+
+RSpec.describe Day5::PartOne do
+  describe '#calculate_seat_ids' do
+    it 'returns the correct seat ids' do
+      expect(described_class.new.calculate_seat_ids('day5/example.txt')).to eq([567, 119, 820])
     end
   end
 end
