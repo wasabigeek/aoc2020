@@ -1,7 +1,7 @@
 require_relative '../helpers'
 
 module Day5
-  class BoardingInstructions
+  class BoardingPass
     attr_accessor :row_upper_bound, :row_lower_bound
     attr_accessor :col_upper_bound, :col_lower_bound
 
@@ -36,12 +36,14 @@ module Day5
       end
     end
 
-    def process_instructions
+    def seat_id
+      row_upper_bound * 8 + col_upper_bound
+    end
+
+    def process
       @instructions.split('').each do |instruction|
         partition_once(instruction)
       end
-
-      seat_id = row_upper_bound * 8 + col_upper_bound
 
       [row_upper_bound, col_upper_bound, seat_id]
     end
@@ -65,14 +67,14 @@ end
 
 # puts Day5::PartOne.new.find_highest_seat_id('day5/input.txt')
 
-seat_ids = Day5::PartOne.new.calculate_seat_ids('day5/input.txt').sort
-potential = []
-previous_seat = seat_ids.first
-seat_ids.each do |seat_id|
-  if seat_id - previous_seat > 1
-    potential << seat_id
-  end
-  previous_seat = seat_id
-end
-puts potential
-puts potential.first - 1
+# seat_ids = Day5::PartOne.new.calculate_seat_ids('day5/input.txt').sort
+# potential = []
+# previous_seat = seat_ids.first
+# seat_ids.each do |seat_id|
+#   if seat_id - previous_seat > 1
+#     potential << seat_id
+#   end
+#   previous_seat = seat_id
+# end
+# puts potential
+# puts potential.first - 1
