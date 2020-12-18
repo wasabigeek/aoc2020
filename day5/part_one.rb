@@ -1,13 +1,13 @@
 require_relative '../helpers'
 
 module Day5
-  class PartOne
+  class BoardingInstructions
     attr_accessor :row_upper_bound, :row_lower_bound
     attr_accessor :col_upper_bound, :col_lower_bound
 
-    include FileHelpers
+    def initialize(instructions=nil)
+      @instructions = instructions
 
-    def initialize
       @row_upper_bound = 127
       @row_lower_bound = 0
       @col_upper_bound = 7
@@ -36,8 +36,8 @@ module Day5
       end
     end
 
-    def process_instructions(instructions)
-      instructions.split('').each do |instruction|
+    def process_instructions
+      @instructions.split('').each do |instruction|
         partition_once(instruction)
       end
 
@@ -46,4 +46,17 @@ module Day5
       [row_upper_bound, col_upper_bound, seat_id]
     end
   end
+
+  class PartOne
+    include FileHelpers
+
+    def find_highest_seat_id(filepath)
+      readlines_from_file(filepath).map do |instructions|
+        _, _, seat_id = BoardingInstructions.new(instructions).process_instructions
+        seat_id
+      end.max
+    end
+  end
 end
+
+# puts Day5::PartOne.new.find_highest_seat_id('day5/input.txt')

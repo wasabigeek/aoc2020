@@ -1,7 +1,7 @@
 require 'rspec'
 require_relative './part_one.rb'
 
-RSpec.describe Day5::PartOne do
+RSpec.describe Day5::BoardingInstructions do
   describe '#partition_once' do
     it 'sets the correct rows' do
       part_one = described_class.new
@@ -45,17 +45,17 @@ RSpec.describe Day5::PartOne do
 
   describe '#process_instructions' do
     it 'returns the correct row, column and seat ID' do
-      row, col, seat_id = described_class.new.process_instructions('BFFFBBFRRR')
+      row, col, seat_id = described_class.new('BFFFBBFRRR').process_instructions
       expect(row).to eq(70)
       expect(col).to eq(7)
       expect(seat_id).to eq(567)
 
-      row, col, seat_id = described_class.new.process_instructions('FFFBBBFRRR')
+      row, col, seat_id = described_class.new('FFFBBBFRRR').process_instructions
       expect(row).to eq(14)
       expect(col).to eq(7)
       expect(seat_id).to eq(119)
 
-      row, col, seat_id = described_class.new.process_instructions('BBFFBBFRLL')
+      row, col, seat_id = described_class.new('BBFFBBFRLL').process_instructions
       expect(row).to eq(102)
       expect(col).to eq(4)
       expect(seat_id).to eq(820)
