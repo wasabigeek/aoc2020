@@ -50,13 +50,29 @@ module Day5
   class PartOne
     include FileHelpers
 
-    def find_highest_seat_id(filepath)
+    def calculate_seat_ids(filepath)
       readlines_from_file(filepath).map do |instructions|
         _, _, seat_id = BoardingInstructions.new(instructions).process_instructions
         seat_id
-      end.max
+      end
+    end
+
+    def find_highest_seat_id(filepath)
+      calculate_seat_ids(filepath).max
     end
   end
 end
 
 # puts Day5::PartOne.new.find_highest_seat_id('day5/input.txt')
+
+seat_ids = Day5::PartOne.new.calculate_seat_ids('day5/input.txt').sort
+potential = []
+previous_seat = seat_ids.first
+seat_ids.each do |seat_id|
+  if seat_id - previous_seat > 1
+    potential << seat_id
+  end
+  previous_seat = seat_id
+end
+puts potential
+puts potential.first - 1
