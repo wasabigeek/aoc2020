@@ -12,7 +12,13 @@ module Day5
     end
 
     def partition_row(instruction)
-      @row_upper_bound = 63
+      mid = (row_lower_bound.to_f + row_upper_bound.to_f) / 2
+
+      if instruction == 'F'
+        @row_upper_bound = mid.floor
+      elsif instruction == 'B'
+        @row_lower_bound = mid.ceil
+      end
     end
   end
 end
