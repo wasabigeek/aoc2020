@@ -35,5 +35,15 @@ module Day5
         end
       end
     end
+
+    def process_instructions(instructions)
+      instructions.split('').each do |instruction|
+        partition_once(instruction)
+      end
+
+      seat_id = row_upper_bound * 8 + col_upper_bound
+
+      [row_upper_bound, col_upper_bound, seat_id]
+    end
   end
 end

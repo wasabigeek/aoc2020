@@ -42,4 +42,23 @@ RSpec.describe Day5::PartOne do
       expect(part_one.col_lower_bound).to eq(5)
     end
   end
+
+  describe '#process_instructions' do
+    it 'returns the correct row, column and seat ID' do
+      row, col, seat_id = described_class.new.process_instructions('BFFFBBFRRR')
+      expect(row).to eq(70)
+      expect(col).to eq(7)
+      expect(seat_id).to eq(567)
+
+      row, col, seat_id = described_class.new.process_instructions('FFFBBBFRRR')
+      expect(row).to eq(14)
+      expect(col).to eq(7)
+      expect(seat_id).to eq(119)
+
+      row, col, seat_id = described_class.new.process_instructions('BBFFBBFRLL')
+      expect(row).to eq(102)
+      expect(col).to eq(4)
+      expect(seat_id).to eq(820)
+    end
+  end
 end
