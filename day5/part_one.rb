@@ -16,24 +16,18 @@ module Day5
     end
 
     def partition_once(instruction)
-      if ['F', 'B'].include? instruction
+      if instruction == 'F'
         mid = (row_lower_bound.to_f + row_upper_bound.to_f) / 2
-
-        if instruction == 'F'
-          @row_upper_bound = mid.floor
-        elsif instruction == 'B'
-          @row_lower_bound = mid.ceil
-        end
-      end
-
-      if ['L', 'R'].include? instruction
+        @row_upper_bound = mid.floor
+      elsif instruction == 'B'
+        mid = (row_lower_bound.to_f + row_upper_bound.to_f) / 2
+        @row_lower_bound = mid.ceil
+      elsif instruction == 'L'
         mid = (col_lower_bound.to_f + col_upper_bound.to_f) / 2
-
-        if instruction == 'L'
-          @col_upper_bound = mid.floor
-        elsif instruction == 'R'
-          @col_lower_bound = mid.ceil
-        end
+        @col_upper_bound = mid.floor
+      elsif instruction == 'R'
+        mid = (col_lower_bound.to_f + col_upper_bound.to_f) / 2
+        @col_lower_bound = mid.ceil
       end
     end
 
