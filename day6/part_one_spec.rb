@@ -26,4 +26,11 @@ RSpec.describe Day6::PartOne do
       expect(result).to eq([3, 3, 3, 1, 1])
     end
   end
+
+  describe '#solve' do
+    it 'sums the count of unique questions per group' do
+      result = described_class.new(filepath: 'day6/example.txt').solve
+      expect(result).to eq(11)
+    end
+  end
 end
