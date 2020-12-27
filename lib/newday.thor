@@ -1,3 +1,6 @@
+require 'httparty'
+require_relative './cookie.rb'
+
 class Newday < Thor::Group
   include Thor::Actions
 
@@ -9,6 +12,14 @@ class Newday < Thor::Group
   end
 
   def create_day_folder
+    response = HTTParty.get(
+      "https://adventofcode.com/2020/day/#{day}/input",
+      {
+        headers: {"cookie" => COOKIE},
+      }
+    )
+    create_file("../day#{day}/input.txt", response.body)
+
     template('./code.erb', "../day#{day}/part_one.rb", { part: 'one' })
     template('./spec.erb', "../day#{day}/part_one_spec.rb", { part: 'one' })
     template('./code.erb', "../day#{day}/part_two.rb", { part: 'two' })
