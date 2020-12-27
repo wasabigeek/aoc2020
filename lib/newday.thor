@@ -9,7 +9,9 @@ class Newday < Thor::Group
   end
 
   def create_day_folder
-    template('./part_one.erb', "../day#{day}/part_one.rb")
-    template('./part_one_spec.erb', "../day#{day}/part_one_spec.rb")
+    template('./code.erb', "../day#{day}/part_one.rb", { part: 'one' })
+    template('./spec.erb', "../day#{day}/part_one_spec.rb", { part: 'one' })
+    template('./code.erb', "../day#{day}/part_two.rb", { part: 'two' })
+    template('./spec.erb', "../day#{day}/part_two_spec.rb", { part: 'two' })
   end
 end

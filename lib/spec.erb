@@ -1,0 +1,5 @@
+require 'rspec'
+require_relative './part_<%= config[:part] %>.rb'
+
+RSpec.describe <%= "Day#{day}" %>::Part<%= config[:part].capitalize %> do
+end

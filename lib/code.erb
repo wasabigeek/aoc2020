@@ -1,7 +1,7 @@
 require_relative '../helpers'
 
 module <%= "Day#{day}" %>
-  class PartOne
+  class <%= "Part#{config[:part].capitalize}" %>
     include FileHelpers
   end
 end
