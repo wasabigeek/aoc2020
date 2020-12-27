@@ -11,6 +11,10 @@ class Solve < Thor::Group
   def solve
     require_relative "../day#{day}/part_one.rb"
     klass = Object.const_get("Day#{day}::PartOne")
-    puts klass.new(filepath: "day#{day}/input.txt").solve
+    puts "Part 1: #{klass.new(filepath: "day#{day}/input.txt").solve}"
+
+    require_relative "../day#{day}/part_two.rb"
+    klass = Object.const_get("Day#{day}::PartTwo")
+    puts "Part 2: #{klass.new(filepath: "day#{day}/input.txt").solve}"
   end
 end
